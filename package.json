@@ -1,0 +1,40 @@
+{
+  "name": "jungle-board-service",
+  "version": "0.0.0",
+  "description": "Find user location from their ip",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nttanh6299/jungle-board-service.git"
+  },
+  "keywords": [
+    "jungle",
+    "chess",
+    "jungle board",
+    "jungle chess",
+    "jungle game",
+    "animal board",
+    "animal chess",
+    "animal game",
+    "beast chess",
+    "oriental chess"
+  ],
+  "author": "Tuan Anh Nguyen <nttanh6299@gmail.com> (https://github.com/nttanh6299)",
+  "homepage": "https://github.com/nttanh6299/jungle-board-service#readme",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "4.0"
+  },
+  "dependencies": {
+    "dequal": "^2.0.2",
+    "klona": "^2.0.5"
+  }
+}
