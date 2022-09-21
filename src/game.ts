@@ -14,7 +14,7 @@ type History = {
   moves: gameLogic.Board[]
 }
 
-class Game {
+export class Game {
   state: gameLogic.IState = { board: [] }
   playerTurn = ''
   moveCount = 0
@@ -121,5 +121,3 @@ class Game {
     }, 1000)
   }
 }
-
-export default Game
