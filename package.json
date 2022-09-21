@@ -1,7 +1,7 @@
 {
   "name": "jungle-board-service",
-  "version": "0.0.0",
-  "description": "Find user location from their ip",
+  "version": "0.0.1",
+  "description": "Jungle board service",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
