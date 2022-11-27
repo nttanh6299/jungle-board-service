@@ -36,6 +36,7 @@ export class Game {
   startGame(maxMove: number, isSinglePlay?: boolean): void {
     this.gameStatus = GameStatus.PLAYING
     this.state.board = gameLogic.getInitialBoard()
+    this.history = { moves: [] }
     this.playerTurn = gameLogic.PlayerSymbol.B
     this.isSinglePlay = Boolean(isSinglePlay)
     this.maxMove = maxMove
