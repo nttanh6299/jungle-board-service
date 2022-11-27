@@ -76,14 +76,16 @@ export class Game {
 
   move(deltaFrom: gameLogic.BoardDelta, deltaTo: gameLogic.BoardDelta, shouldRotateBoard?: boolean): void {
     if (this.state.board) {
+      const moveFrom = { ...deltaFrom }
+      const moveTo = { ...deltaTo }
       if (shouldRotateBoard) {
-        deltaFrom.row = gameLogic.ROWS - deltaFrom.row - 1
-        deltaFrom.col = gameLogic.COLS - deltaFrom.col - 1
-        deltaTo.row = gameLogic.ROWS - deltaTo.row - 1
-        deltaTo.col = gameLogic.COLS - deltaTo.col - 1
+        moveFrom.row = gameLogic.ROWS - moveFrom.row - 1
+        moveFrom.col = gameLogic.COLS - moveFrom.col - 1
+        moveTo.row = gameLogic.ROWS - moveTo.row - 1
+        moveTo.col = gameLogic.COLS - moveTo.col - 1
       }
 
-      const { nextBoard, winner } = gameLogic.makeMove(this.state.board, deltaFrom, deltaTo)
+      const { nextBoard, winner } = gameLogic.makeMove(this.state.board, moveFrom, moveTo)
       // const { prevBoard, nextBoard, winner } = gameLogic.makeMove(this.state.board, deltaFrom, deltaTo)
 
       // this.history.moves.push(prevBoard)
