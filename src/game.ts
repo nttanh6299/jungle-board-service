@@ -31,6 +31,7 @@ export class Game {
 
   initBoard() {
     this.state.board = gameLogic.getEmptyBoard()
+    this.gameStatus = GameStatus.READY
   }
 
   startGame(maxMove: number, isSinglePlay?: boolean): void {
