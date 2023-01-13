@@ -76,32 +76,41 @@ export class Game {
     return rotatedBoard
   }
 
-  move(deltaFrom: gameLogic.BoardDelta, deltaTo: gameLogic.BoardDelta, shouldRotateBoard?: boolean): void {
-    if (this.state.board) {
-      const moveFrom = { ...deltaFrom }
-      const moveTo = { ...deltaTo }
-      if (shouldRotateBoard) {
-        moveFrom.row = gameLogic.ROWS - moveFrom.row - 1
-        moveFrom.col = gameLogic.COLS - moveFrom.col - 1
-        moveTo.row = gameLogic.ROWS - moveTo.row - 1
-        moveTo.col = gameLogic.COLS - moveTo.col - 1
-      }
-
-      const { nextBoard, winner } = gameLogic.makeMove(this.state.board, moveFrom, moveTo)
-      // const { prevBoard, nextBoard, winner } = gameLogic.makeMove(this.state.board, deltaFrom, deltaTo)
-
-      // this.history.moves.push(prevBoard)
-      this.state.board = nextBoard
-      this.moveCount += 1
-
-      if (winner !== '') {
-        if (winner === this.playerTurn || winner === gameLogic.getOpponentTurn(this.playerTurn)) {
-          this.gameStatus = GameStatus.END
-        }
-      } else if (this.moveCount === this.maxMove) {
-        this.gameStatus = GameStatus.TIE
-      }
+  move(deltaFrom: gameLogic.BoardDelta, deltaTo: gameLogic.BoardDelta, shouldRotateBoard?: boolean): boolean {
+    if (!this.state.board) {
+      return false
     }
+
+    const moveFrom = { ...deltaFrom }
+    const moveTo = { ...deltaTo }
+    if (shouldRotateBoard) {
+      moveFrom.row = gameLogic.ROWS - moveFrom.row - 1
+      moveFrom.col = gameLogic.COLS - moveFrom.col - 1
+      moveTo.row = gameLogic.ROWS - moveTo.row - 1
+      moveTo.col = gameLogic.COLS - moveTo.col - 1
+    }
+
+    const isInvalidPiece = gameLogic.noChessPiece(this.state.board, deltaFrom)
+    if (isInvalidPiece) {
+      return false
+    }
+
+    const { nextBoard, winner } = gameLogic.makeMove(this.state.board, moveFrom, moveTo)
+    // const { prevBoard, nextBoard, winner } = gameLogic.makeMove(this.state.board, deltaFrom, deltaTo)
+
+    // this.history.moves.push(prevBoard)
+    this.state.board = nextBoard
+    this.moveCount += 1
+
+    if (winner !== '') {
+      if (winner === this.playerTurn || winner === gameLogic.getOpponentTurn(this.playerTurn)) {
+        this.gameStatus = GameStatus.END
+      }
+    } else if (this.moveCount === this.maxMove) {
+      this.gameStatus = GameStatus.TIE
+    }
+
+    return true
   }
 
   computerMove(): void {
