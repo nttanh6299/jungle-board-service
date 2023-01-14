@@ -1,6 +1,6 @@
 {
   "name": "jungle-board-service",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Jungle board service",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

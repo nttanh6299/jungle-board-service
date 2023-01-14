@@ -90,7 +90,14 @@ export class Game {
       moveTo.col = gameLogic.COLS - moveTo.col - 1
     }
 
+    console.log('----------------- lib -----------------')
+    console.log('before rotate:', deltaFrom)
+    console.log('after rotate:', moveFrom)
+
     const isInvalidPiece = gameLogic.noChessPiece(this.state.board, moveFrom)
+    console.log('board', this.state.board)
+    console.log('isInvalidPiece', isInvalidPiece)
+    console.log('/----------------- lib -----------------')
     if (isInvalidPiece) {
       return false
     }
