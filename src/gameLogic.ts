@@ -231,7 +231,6 @@ export function isOpponent(board: Board, delta: BoardDelta): boolean {
 export function noChessPiece(board: Board, delta: BoardDelta): boolean {
   const { L, R, BTrap, WTrap, BDen, WDen } = PieceName
   const piece = board[delta.row][delta.col]
-  console.log('what piece', piece)
   return [L, R, BTrap, WTrap, BDen, WDen].includes(piece)
 }
 
