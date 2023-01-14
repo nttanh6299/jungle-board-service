@@ -1,6 +1,6 @@
 {
   "name": "jungle-board-service",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Jungle board service",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,8 +9,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "postversion": "git push && git push --tags",
-    "publish": "yarn build && npm publish"
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
