@@ -90,7 +90,7 @@ export class Game {
       moveTo.col = gameLogic.COLS - moveTo.col - 1
     }
 
-    const isInvalidPiece = gameLogic.noChessPiece(this.state.board, deltaFrom)
+    const isInvalidPiece = gameLogic.noChessPiece(this.state.board, moveFrom)
     if (isInvalidPiece) {
       return false
     }
